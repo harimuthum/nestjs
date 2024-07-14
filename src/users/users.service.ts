@@ -31,5 +31,8 @@ export class UsersService {
     const { id, ...updateData } = updateUserInput;
     return this.userModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
   }
-
+  
+  async remove(id: string): Promise<User> {
+    return this.userModel.findOneAndDelete({ _id: id }).exec();
+  }
 }
