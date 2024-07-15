@@ -9,4 +9,5 @@ export declare class UsersService {
     findAll(): Promise<User[]>;
     findOne(id: string): Promise<User>;
     update(updateUserInput: UpdateUserInput): Promise<User>;
+    remove(id: string): Promise<User>;
 }

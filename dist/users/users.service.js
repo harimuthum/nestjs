@@ -38,6 +38,9 @@ let UsersService = class UsersService {
         const { id, ...updateData } = updateUserInput;
         return this.userModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
     }
+    async remove(id) {
+        return this.userModel.findOneAndDelete({ _id: id }).exec();
+    }
 };
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
