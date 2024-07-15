@@ -13,6 +13,7 @@ const apollo_1 = require("@nestjs/apollo");
 const graphql_1 = require("@nestjs/graphql");
 const path_1 = require("path");
 const users_module_1 = require("./users/users.module");
+const book_module_1 = require("./books/book.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -25,6 +26,7 @@ exports.AppModule = AppModule = __decorate([
                 autoSchemaFile: (0, path_1.join)(process.cwd(), 'src/schema.gql'),
             }),
             users_module_1.UsersModule,
+            book_module_1.BooksModule
         ],
     })
 ], AppModule);

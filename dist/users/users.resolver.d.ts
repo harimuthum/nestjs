@@ -9,4 +9,5 @@ export declare class UsersResolver {
     findOne(id: string): Promise<User>;
     createUser(createUserInput: CreateUserInput): Promise<User>;
     updateUser(updateUserInput: UpdateUserInput): Promise<User>;
+    deleteUser(id: string): Promise<User>;
 }

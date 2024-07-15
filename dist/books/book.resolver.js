@@ -12,69 +12,69 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersResolver = void 0;
+exports.BooksResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const users_service_1 = require("./users.service");
-const user_entity_1 = require("./entities/user.entity");
-const create_user_input_1 = require("./dto/create-user.input");
-const update_user_input_1 = require("./dto/update-user.input");
-let UsersResolver = class UsersResolver {
-    constructor(usersService) {
-        this.usersService = usersService;
+const book_service_1 = require("./book.service");
+const book_entities_1 = require("./entities/book.entities");
+const create_book_input_1 = require("./dto/create.book.input");
+const update_book_input_1 = require("./dto/update.book.input");
+let BooksResolver = class BooksResolver {
+    constructor(BooksService) {
+        this.BooksService = BooksService;
     }
     findAll() {
-        return this.usersService.findAll();
+        return this.BooksService.findAll();
     }
     findOne(id) {
-        return this.usersService.findOne(id);
+        return this.BooksService.findOne(id);
     }
-    createUser(createUserInput) {
-        return this.usersService.create(createUserInput);
+    createBook(createBookInput) {
+        return this.BooksService.create(createBookInput);
     }
-    updateUser(updateUserInput) {
-        return this.usersService.update(updateUserInput);
+    updateBook(updateBookInput) {
+        return this.BooksService.update(updateBookInput);
     }
-    async deleteUser(id) {
-        return this.usersService.remove(id);
+    async deleteBook(id) {
+        return this.BooksService.remove(id);
     }
 };
-exports.UsersResolver = UsersResolver;
+exports.BooksResolver = BooksResolver;
 __decorate([
-    (0, graphql_1.Query)(() => [user_entity_1.User], { name: 'users' }),
+    (0, graphql_1.Query)(() => [book_entities_1.Book], { name: 'Books' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], UsersResolver.prototype, "findAll", null);
+], BooksResolver.prototype, "findAll", null);
 __decorate([
-    (0, graphql_1.Query)(() => user_entity_1.User, { name: 'user' }),
+    (0, graphql_1.Query)(() => book_entities_1.Book, { name: 'Book' }),
     __param(0, (0, graphql_1.Args)('id', { type: () => String })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], UsersResolver.prototype, "findOne", null);
+], BooksResolver.prototype, "findOne", null);
 __decorate([
-    (0, graphql_1.Mutation)(() => user_entity_1.User),
-    __param(0, (0, graphql_1.Args)('createUserInput')),
+    (0, graphql_1.Mutation)(() => book_entities_1.Book),
+    __param(0, (0, graphql_1.Args)('createBookInput')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_user_input_1.CreateUserInput]),
+    __metadata("design:paramtypes", [create_book_input_1.CreateBookInput]),
     __metadata("design:returntype", void 0)
-], UsersResolver.prototype, "createUser", null);
+], BooksResolver.prototype, "createBook", null);
 __decorate([
-    (0, graphql_1.Mutation)(() => user_entity_1.User),
-    __param(0, (0, graphql_1.Args)('updateUserInput')),
+    (0, graphql_1.Mutation)(() => book_entities_1.Book),
+    __param(0, (0, graphql_1.Args)('updateBookInput')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [update_user_input_1.UpdateUserInput]),
+    __metadata("design:paramtypes", [update_book_input_1.UpdateBookInput]),
     __metadata("design:returntype", void 0)
-], UsersResolver.prototype, "updateUser", null);
+], BooksResolver.prototype, "updateBook", null);
 __decorate([
-    (0, graphql_1.Mutation)(() => user_entity_1.User),
+    (0, graphql_1.Mutation)(() => book_entities_1.Book),
     __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.ID })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], UsersResolver.prototype, "deleteUser", null);
-exports.UsersResolver = UsersResolver = __decorate([
-    (0, graphql_1.Resolver)(() => user_entity_1.User),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
-], UsersResolver);
-//# sourceMappingURL=users.resolver.js.map
+], BooksResolver.prototype, "deleteBook", null);
+exports.BooksResolver = BooksResolver = __decorate([
+    (0, graphql_1.Resolver)(() => book_entities_1.Book),
+    __metadata("design:paramtypes", [book_service_1.BooksService])
+], BooksResolver);
+//# sourceMappingURL=book.resolver.js.map

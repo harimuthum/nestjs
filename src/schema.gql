@@ -9,14 +9,27 @@ type User {
   email: String!
 }
 
+type Book {
+  id: ID!
+  book_name: String!
+  author_name: String!
+  user: String!
+}
+
 type Query {
   users: [User!]!
   user(id: String!): User!
+  Books: [Book!]!
+  Book(id: String!): Book!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
+  deleteUser(id: ID!): User!
+  createBook(createBookInput: CreateBookInput!): Book!
+  updateBook(updateBookInput: UpdateBookInput!): Book!
+  deleteBook(id: ID!): Book!
 }
 
 input CreateUserInput {
@@ -29,5 +42,18 @@ input UpdateUserInput {
   name: String
   age: Int
   email: String
+  id: ID!
+}
+
+input CreateBookInput {
+  book_name: String!
+  author_name: String!
+  user: String!
+}
+
+input UpdateBookInput {
+  book_name: String
+  author_name: String
+  user: String
   id: ID!
 }

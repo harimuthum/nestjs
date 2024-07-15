@@ -12,40 +12,40 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersService = void 0;
+exports.BooksService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-let UsersService = class UsersService {
-    constructor(userModel) {
-        this.userModel = userModel;
+let BooksService = class BooksService {
+    constructor(BookModel) {
+        this.BookModel = BookModel;
     }
-    async create(createUserInput) {
-        const createdUser = new this.userModel(createUserInput);
-        return createdUser.save();
+    async create(createBookInput) {
+        const createdBook = new this.BookModel(createBookInput);
+        return createdBook.save();
     }
     async findAll() {
-        return this.userModel.find().exec();
+        return this.BookModel.find().exec();
     }
     async findOne(id) {
-        const user = await this.userModel.findById(id).exec();
-        if (!user) {
-            throw new common_1.NotFoundException(`User with ID ${id} not found`);
+        const Book = await this.BookModel.findById(id).exec();
+        if (!Book) {
+            throw new common_1.NotFoundException(`Book with ID ${id} not found`);
         }
-        return user;
+        return Book;
     }
-    async update(updateUserInput) {
-        const { id, ...updateData } = updateUserInput;
-        return this.userModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
+    async update(updateBookInput) {
+        const { id, ...updateData } = updateBookInput;
+        return this.BookModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
     }
     async remove(id) {
-        return this.userModel.findOneAndDelete({ _id: id }).exec();
+        return this.BookModel.findOneAndDelete({ _id: id }).exec();
     }
 };
-exports.UsersService = UsersService;
-exports.UsersService = UsersService = __decorate([
+exports.BooksService = BooksService;
+exports.BooksService = BooksService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)('User')),
+    __param(0, (0, mongoose_1.InjectModel)('Book')),
     __metadata("design:paramtypes", [mongoose_2.Model])
-], UsersService);
-//# sourceMappingURL=users.service.js.map
+], BooksService);
+//# sourceMappingURL=book.service.js.map
