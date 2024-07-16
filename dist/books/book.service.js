@@ -25,7 +25,7 @@ let BooksService = class BooksService {
         return createdBook.save();
     }
     async findAll() {
-        return this.BookModel.find().exec();
+        return this.BookModel.find().populate('user').exec();
     }
     async findOne(id) {
         const Book = await this.BookModel.findById(id).exec();

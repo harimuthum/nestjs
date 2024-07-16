@@ -1,9 +1,12 @@
 import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { User } from 'src/users/entities/user.entity';
+import { Schema as MongooseSchema } from 'mongoose';
+
 
 @ObjectType()
 export class Book {
   @Field(() => ID)
-  id: string;
+  _id: MongooseSchema.Types.ObjectId;
 
   @Field()
   book_name: string;
@@ -11,6 +14,6 @@ export class Book {
   @Field()
   author_name: string;
 
-  @Field()
-  user: object;
+  @Field(() => User)
+  user: User;
 }

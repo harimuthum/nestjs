@@ -11,13 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Book = void 0;
 const graphql_1 = require("@nestjs/graphql");
+const user_entity_1 = require("../../users/entities/user.entity");
+const mongoose_1 = require("mongoose");
 let Book = class Book {
 };
 exports.Book = Book;
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.ID),
-    __metadata("design:type", String)
-], Book.prototype, "id", void 0);
+    __metadata("design:type", mongoose_1.Schema.Types.ObjectId)
+], Book.prototype, "_id", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
@@ -27,8 +29,8 @@ __decorate([
     __metadata("design:type", String)
 ], Book.prototype, "author_name", void 0);
 __decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
+    (0, graphql_1.Field)(() => user_entity_1.User),
+    __metadata("design:type", user_entity_1.User)
 ], Book.prototype, "user", void 0);
 exports.Book = Book = __decorate([
     (0, graphql_1.ObjectType)()

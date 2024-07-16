@@ -10,10 +10,10 @@ type User {
 }
 
 type Book {
-  id: ID!
+  _id: ID!
   book_name: String!
   author_name: String!
-  user: String!
+  user: User!
 }
 
 type Query {
