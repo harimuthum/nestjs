@@ -13,7 +13,8 @@ export class Book {
 
   @Field()
   author_name: string;
-
+  // @Field()
+  // user: string;
   @Field(() => User)
   user: User;
 }

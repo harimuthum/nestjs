@@ -21,8 +21,9 @@ let BooksService = class BooksService {
         this.BookModel = BookModel;
     }
     async create(createBookInput) {
-        const createdBook = new this.BookModel(createBookInput);
-        return createdBook.save();
+        const userId = new mongoose_2.Types.ObjectId(createBookInput.user);
+        const book = new this.BookModel({ ...createBookInput, user: userId });
+        return book.save();
     }
     async findAll() {
         return this.BookModel.find().populate('user').exec();

@@ -1,17 +1,22 @@
 // src/Books/Books.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model,Types } from 'mongoose';
 import { Book } from './entities/book.entities';
 import { CreateBookInput } from './dto/create.book.input';
 import { UpdateBookInput } from './dto/update.book.input';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class BooksService {
-  constructor(@InjectModel('Book') private BookModel: Model<Book>) {}
+  constructor(
+  @InjectModel('Book') private BookModel: Model<Book>
+) {}
 
   async create(createBookInput: CreateBookInput): Promise<Book> {
+    const userId = new Types.ObjectId(createBookInput.user); // Assuming createBookDto.userId is a string
     const createdBook = new this.BookModel(createBookInput);
+    // const book = new this.BookModel({ ...createBookInput, user: userId });
     return createdBook.save();
   }
 
